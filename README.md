@@ -17,13 +17,3 @@ Request payload: order id, new status
 4) Create a command to find all “processing” orders that have passed their delivery time and 
 update their status to “delayed”
 Think about writing & using serializer, swagger, migrations and unit tests
-
-
-Bundles/Packages Installed
-
-NelmioApiDocBundle
-Logger
-Serializer
-orm-pack 
-doctrine/doctrine-migrations-bundle
-symfony/uid
