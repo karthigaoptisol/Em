@@ -7,6 +7,8 @@ Request payload:
 • Delivery address
 • Order items (id, quantity)
 • Delivery option
+
+
 2) GET /api/orders
 Create Get orders API, sending either order id or status in url param
 Orders response should include all Order data from task 1 plus estimated delivery date & time and 
@@ -17,3 +19,5 @@ Request payload: order id, new status
 4) Create a command to find all “processing” orders that have passed their delivery time and 
 update their status to “delayed”
 Think about writing & using serializer, swagger, migrations and unit tests
+
+Command - php bin/console app:update-delayed-orders
