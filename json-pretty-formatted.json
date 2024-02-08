@@ -1,0 +1,44 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Electric Miles Test",
+        "description": "Orders API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/orders": {
+            "get": {
+                "summary": "List the rewards of the specified user.",
+                "description": "This call takes into account all confirmed awards, but not pending or refused awards.",
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a new order.",
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update status of the order based on orderId",
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "error": {},
+            "type": {},
+            "properties": {}
+        }
+    }
+}
