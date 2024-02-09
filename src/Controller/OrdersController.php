@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Orders;
 use App\Handler\OrderHandler;
-use App\Shared\Dto\OrderItemDto;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -95,15 +94,31 @@ class OrdersController extends AbstractController
         name: 'orderitem',
         in: 'query',
         description: 'Order Items',
-        schema: new OA\Schema(type: "object",ref: new Model(type: OrderItemDto::class))
-    )]
+        schema: new OA\Schema(type: 'array',
+        items: new OA\Items(
+            // your list item
+                type: 'object',
+                properties: [
+                    new OA\Property(
+                        property: "item",
+                        type: "string",
+                        example: "item name"
+                    ),
+                    new OA\Property(
+                        property: "quantity",
+                        type: "int",
+                        example: "2"
+                    )
+                ]
+            )
+    ))]
     #[OA\Tag(name: 'Orders Create')]
     public function createOrder(Request $request): JsonResponse
     {
         try {
             return $this->orderHandler->processCreate($request);
 		} catch (Throwable $thr) {
-			return $thr->getMessage();
+			return  new JsonResponse(['error'=> $thr->getMessage()], JsonResponse::HTTP_BAD_REQUEST);
 		}
     }
 
